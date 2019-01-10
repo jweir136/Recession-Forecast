@@ -1,1 +1,1 @@
-web: gunicorn forecaster.wsgi --log-file -
+web: gunicorn recession_forecast.wsgi --log-file -
