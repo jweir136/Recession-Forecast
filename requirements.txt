@@ -3,4 +3,4 @@ gunicorn
 django-heroku
 requests==2.19.1
 html5lib==1.0.1
-bs4==4.6.3
+BeautifulSoup==4.6.3
