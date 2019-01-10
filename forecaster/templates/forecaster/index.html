@@ -1,0 +1,361 @@
+<!doctype html>
+<html>
+  <head>
+    <link href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel = "stylesheet">
+	<style>
+		html {
+		  width:100%;
+		  height:100%;
+		}
+
+		body {
+		  width:100%;
+		  height:100%;
+		  margin:0;
+		  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+		}
+
+		.topbar {
+		  width:100%;
+		  height:15%;
+		  background:whitesmoke;
+		  padding-bottom:1%;
+		  border-bottom:2px solid whitesmoke;
+		}
+
+		.topbar-table {
+		  width:100%;
+		  height:100%;
+		}
+
+		.topbar-table-col1 {
+		  width:33%;
+		  height:100%;
+		  font-size:250%;
+		}
+
+		.topbar-table-col2 {
+		  width:33%;
+		  height:100%;
+		}
+
+		.subscribe-button {
+		  width:50%;
+		  height:80%;
+		  margin:auto;
+		  font-size:125%;
+		  padding-top:1.5%;
+		  padding-bottom:1.5%;
+		  border-radius:140px 140px 140px 140px;
+		  color:black;
+		  text-align:center;
+		  color:white;
+		  background:#29ca8e;
+		}
+
+		.topbar a {
+		  text-decoration:none;
+		}
+
+		.title {
+		  margin-left:10%;
+		  font-size:220%;
+		}
+
+		.main {
+		  width:100%;
+		  height:100%;
+		}
+
+		.main-table {
+		  width:100%;
+		  height:50%;
+		}
+
+		.main-table-col1 {
+		  width:75%;
+		  height:100%;
+		}
+
+		.logo {
+		  margin-left:10%;
+		  font-size:125%;
+		}
+
+		.title {
+		  font-size:250%;
+		}
+		
+		.status-table {
+			width:75%;
+			height:50%;
+			margin:auto;
+		}
+		
+		.status {
+			{% if status == 0 %}
+				width:60%;
+				height:100%;
+			{% else %}
+				width:30%;
+				height:50%;
+			{% endif %}
+			background:green;
+			float:right;
+			border-radius:140px 140px 140px 140px;
+		}
+		
+		.status2 {
+			{% if status == 1 %}
+				width:60%;
+				height:100%;
+			{% else %}
+				width:30%;
+				height:50%;
+			{% endif %}
+			background:yellow;
+			border-radius:140px 140px 140px 140px;
+			margin:auto;
+		}
+		
+		.status3 {
+			width:30%;
+			height:50%;
+			background:red;
+			border-radius:140px 140px 140px 140px;
+			float:left;
+		}
+		
+		.status-title {
+			text-align:center;
+			color:green;
+		}
+		
+		p {
+			text-align:center;
+		}
+		
+		.algo-performance-title {
+			text-align:center;
+			font-size:175%;
+		}
+		
+		.accuracy {
+			font-weight:normal;
+			font-size:115%;
+		}
+		
+		.accuracy {
+			float:left;
+		}
+		
+		.main_table2 {
+			width:100%;
+			height:50%;
+		}
+		
+		.custom-title {
+			text-align:center;
+			font-size:175%;
+		}
+		
+		.process-title {
+			font-size:225%;
+			text-align:center;
+		}
+		
+		.vix, .yield-curve, .prices {
+			width:80%;
+			font-weight:normal;
+			margin:auto;
+		}
+		
+		.js-bookmark {
+			margin-left:10%;
+		}
+		
+		@media screen and (min-width:0px) and (max-width: 1000px) {
+			.logo {
+				width:10%;
+			}
+			
+			.main-table-col2 {
+				display:none;
+			}
+			
+			.subscribe-button {
+				width:85%;
+				padding-top:5%;
+				padding-bottom:5%;
+				font-size:130%;
+			}
+			
+			.title {
+				width:100%;
+				font-size:175%;
+			}
+			
+			.status {
+				{% if status == 0 %}
+					width:100%;
+					height:90%;
+				{% else %}
+					width:50%;
+					height:45%;
+				{% endif %}
+			}
+			
+			.status2 {
+				{% if status == 1 %}
+					width:100%;
+					height:90%;
+				{% else %}
+					width:50%;
+					height:45%;
+				{% endif %}
+			}
+			
+			.status3 {
+				width:50%;
+				height:45%;
+			}
+		}
+	</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class='topbar'>
+      <table class='topbar-table'>
+         <tr>
+           <th class='topbar-table-col1'>
+             <h1 class='logo'>Quant</h1>
+           </th>
+           <th class='topbar-table-col2'>
+             
+           </th>
+           <th class='topbar-table-col3'>
+             <a href="https://quant-signup.herokuapp.com/quant_signup/">
+               <div class='subscribe-button'>
+                 Subscribe
+               </div>
+             </a>
+           </th>
+        </tr>
+      </table>
+    </div>
+    <h1 class='title'>Recession Forecaster</h1>
+	<a class='js-bookmark'>Bookmark this page</a>
+	<br/>
+	<br/>
+    <div class='main'>
+      <table class='main-table' style="border-right:2px solid lightgrey;">
+        <tr>
+          <th class='main-table-col1' style="border-bottom:2px solid lightgrey;">
+			<table class='status-table'>
+				<tr>
+					<th class='status-col1'>
+						<div class='status'></div>
+					</th>
+					<th class='status-col2'>
+						<div class='status2'></div>
+					</th>
+					<th class='status-col3'>
+						<div class='status3'></div>
+					</th>
+				</tr>
+			</table>
+			<br/>
+			{% if status == 0 %}
+				<h1 class='status-title'>Good</h1>
+				<p>
+					The economy is doing great, and there's nothing to worry about.
+				</p>
+			{% elif status == 1 %}
+				<h1 class='status-title2'>Ok</h1>
+				<p>
+					Everything is looking fine at the moment, but there are signs of a recession in the future.
+					It may be wise to create an exit plan.
+				</p>
+			{% endif %}
+          </th>
+          <th class='main-table-col2' style="border-bottom:2px solid lightgrey;border-right:2px solid white;">
+		  <div style="width:80%;height:100%;margin:auto;">
+			<br/>
+            <h1 class='algo-performance-title'>
+				Algo Performance
+			</h1>
+			<br/>
+			<p class='accuracy'>
+				<b>Accuracy:</b>&nbsp;&nbsp;&nbsp;&nbsp;98.4%
+			</p>
+			<p class='accuracy'>
+				<b>Recession Accuracy:</b>&nbsp;&nbsp;&nbsp;&nbsp;100%
+			</p>
+			<p class='accuracy'>
+				<b>Non-recession Accuracy:</b>&nbsp;&nbsp;&nbsp;&nbsp;96.8%
+			</p>
+		  </div>
+          </th>
+        </tr>
+      </table>
+	  <table class='main_table2'>
+		<tr>
+			<th class='main-table-col1'>
+				<h1 class='process-title'>Algo Process</h1>
+				<br/>
+				<p class='vix'> 
+					<b>VIX:</b>&nbsp;&nbsp;&nbsp;&nbsp;The VIX is known was the fear index.
+					It measures 30-day voltality, and investor sentiment.  In general, when the
+					VIX goes up, a recession is more likely to occur.
+				</p>
+				<p class='yield-curve'>
+					<b>Yield Curve:</b>&nbsp;&nbsp;&nbsp;&nbsp;The yield curve is a collection
+					of treasury bond yields for varying periods of time.  In general, when they start
+					to go down, a recession is more likely.
+				</p>
+				<p class='prices'>
+					<b>Prices:</b>&nbsp;&nbsp;&nbsp;&nbsp;One of the biggest tell-tale
+					signs of a recession is, of course, falling stock prices.
+				</p>
+			</th>
+			<th class='main-table-col2'>
+		
+			</th>
+		</tr>
+	  </table>
+    </div>
+	<script>
+		var triggerBookmark = $(".js-bookmark"); // It must be an `a` tag
+
+		triggerBookmark.click(function() {
+			
+			if (window.sidebar && window.sidebar.addPanel) { // Firefox <23
+				
+				window.sidebar.addPanel(document.title,window.location.href,'');
+
+			} else if(window.external && ('AddFavorite' in window.external)) { // Internet Explorer
+
+				window.external.AddFavorite(location.href,document.title); 
+
+			} else if(window.opera && window.print || window.sidebar && ! (window.sidebar instanceof Node)) { // Opera <15 and Firefox >23
+				/**
+				 * For Firefox <23 and Opera <15, no need for JS to add to bookmarks
+				 * The only thing needed is a `title` and a `rel="sidebar"`
+				 * To ensure that the bookmarked URL doesn't have a complementary `#` from our trigger's href
+				 * we force the current URL
+				 */
+				triggerBookmark.attr('rel', 'sidebar').attr('title', document.title).attr('href', window.location.href);
+				return true;
+			
+			} else { // For the other browsers (mainly WebKit) we use a simple alert to inform users that they can add to bookmarks with ctrl+D/cmd+D
+				
+				alert('You can add this page to your bookmarks by pressing ' + (navigator.userAgent.toLowerCase().indexOf('mac') != - 1 ? 'Command/Cmd' : 'CTRL') + ' + D on your keyboard.');
+			
+			}
+			// If you have something in the `href` of your trigger
+			return false;
+		});
+	</script>
+  </body>
+</html>
