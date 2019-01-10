@@ -25,7 +25,7 @@ SECRET_KEY = '%(*g$8b-yd$9nf0s$r=v$kel5)o8cj-_s!y9_4_$iz&3qm6&ik'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.24']
+ALLOWED_HOSTS = ['192.168.0.24', 'recession-forecast.herokuapp.com']
 
 
 # Application definition
