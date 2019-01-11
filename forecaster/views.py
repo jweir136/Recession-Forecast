@@ -22,7 +22,7 @@ def index(requests):
 	yield_curve = quandl.get("FRED/IOER", paginate=True)
 	yield_data = yield_curve.values[len(yield_curve) - 1][0] - yield_curve.values[len(yield_curve) - 32][0]
 	dir = os.getcwd()
-	filename = r"{}\forecaster\model.sav".format(dir)
+	filename = r"{}/forecaster/model.sav".format(dir)
 	file = open(filename, "rb")
 	model = pickle.load(file)
 	status = model.predict([[yield_data, vix_close]])
