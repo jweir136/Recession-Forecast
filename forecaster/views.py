@@ -56,7 +56,7 @@ def index(requests):
 	# if the system was not updated today...
 	obj = Updates.objects.all()
 	last_day = int(obj.values('last_update')[0]['last_update'])
-	
+	"""
 	if last_day != int(datetime.now().day):
 		print(True)
 		# run the scaping functions
@@ -70,8 +70,13 @@ def index(requests):
 		delta_yield = float(obj.values('delta_yield')[0]['delta_yield'])
 		delta_vix = float(obj.values('delta_vix')[0]['delta_vix'])
 		print(delta_yield, delta_vix)
-		
-	model = pickle.load(open(r"C:\Users\jweir\Data Science Practice 1\datasets\basic_regression\AAPL1\recession_forecast\recession_forecast\forecaster/recession_model.sav", "rb"))
-	status = model.predict([[delta_yield, delta_vix]])
+	"""
+	from rq import Queue
+	from .worker import conn
+	q = Queue(connection=conn)
+	from .utils import test
+	result = q.enqueue(test)
+	#model = pickle.load(open(r"C:\Users\jweir\Data Science Practice 1\datasets\basic_regression\AAPL1\recession_forecast\recession_forecast\forecaster/recession_model.sav", "rb"))
+	#status = model.predict([[delta_yield, delta_vix]])
 		
 	return render(requests, "forecaster/index.html", {"status":status})
