@@ -17,7 +17,7 @@ def index(requests):
 	obj = Updates.objects.all()
 	last_day = int(obj.values('last_update')[0]['last_update'])
 	vix = quandl.get("CHRIS/CBOE_VX1", paginate=True)
-	vix_close = vix.values[len(vix) - 1][4] - vix.values[len(vix) - 3][4]
+	vix_close = vix.values[len(vix) - 1][4] - vix.values[len(vix) - 32][4]
 	yield_curve = quandl.get("FRED/IOER", paginate=True)
 	yield_data = yield_curve.values[len(yield_curve) - 1][0] - yield_curve.values[len(yield_curve) - 32][0]
 	dir = os.getcwd()
