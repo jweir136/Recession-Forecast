@@ -16,6 +16,7 @@ def index(requests):
 	# if the system was not updated today...
 	obj = Updates.objects.all()
 	last_day = int(obj.values('last_update')[0]['last_update'])
+	quandl.ApiConfig.api_key = "1sof-3kR9pZ25SpEjN55"
 	vix = quandl.get("CHRIS/CBOE_VX1", paginate=True)
 	vix_close = vix.values[len(vix) - 1][4] - vix.values[len(vix) - 32][4]
 	yield_curve = quandl.get("FRED/IOER", paginate=True)
